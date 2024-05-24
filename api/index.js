@@ -7,7 +7,7 @@ import postRoute from "./routes/post.route.js";
 import commentRoute from "./routes/comment.route.js";
 import cookieParser from 'cookie-parser'
 import path from 'path'
-
+import cors from 'cors'
 
 dotenv.config()
 mongoose.connect(process.env.MONGO).then(
@@ -24,6 +24,8 @@ const app = express()
 
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({"origin": "*"}))
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000!')
 })
